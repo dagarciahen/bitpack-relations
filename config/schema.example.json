@@ -1,0 +1,124 @@
+{
+  "schema_version": 1,
+
+  "bitpacking": {
+    "index_start": 1,
+    "index_step": 1,
+    "byte_start": 2,
+    "bits_per_byte": 8,
+    "byte_limit": 1024,
+    "fill_order": "msb_first"
+  },
+
+  "columns": {
+    "index": "IND_TX",
+    "offset_byte": "OFF_BYTE",
+    "offset_bit": "OFF_BIT",
+    "width_bits": "NBIT",
+    "station_id": "IDSTAZ",
+    "device_type": "TIPO_ENTE",
+    "device_code": "ID_ENTE",
+    "signal_code": "ID_CAMPO",
+    "description": "DESCRIZION",
+    "type_code": "ID_TIPOENT",
+    "type_name": "NOME_SIMBO",
+    "state_code": "PROG_STATO",
+    "state_name": "NOME_SIMBO",
+    "state_initial": "STATOINIZ",
+    "signal_prog": "PROG_CAMPO",
+    "value": "VALORE_TX",
+    "state_label": "VAL_STATO",
+    "safety": "SICURO",
+    "default": "DEFAULT"
+  },
+
+  "project": {
+    "station_count_key": "NSTAZIONILINEA",
+    "station_key_template": "STAZ{n}",
+    "station_id_key": "IDSTAZIONE",
+    "catalog_file_key": "IO_CATALOG.DBF",
+    "catalog_dir": "DBI",
+    "catalog_file_name": "IO_CATALOG.DBF"
+  },
+
+  "tables": {
+    "device_types": {
+      "path": "data/DEVICE_TYPES.DBF",
+      "format": "dbf",
+      "encoding": "latin1"
+    },
+    "signal_catalog": {
+      "path": "data/SIGNAL_CATALOG.DBF",
+      "format": "dbf",
+      "encoding": "latin1"
+    },
+    "signal_states": {
+      "path": "data/SIGNAL_STATES.DBF",
+      "format": "dbf",
+      "encoding": "latin1"
+    },
+    "mapping_template": {
+      "path": "data/MAPPING_TEMPLATE.DBF",
+      "format": "dbf",
+      "encoding": "latin1"
+    }
+  },
+
+  "generation": {
+    "tx": {
+      "signal_column": "signal_code",
+      "type_column": "type_code",
+      "device_type_column": "device_type",
+      "device_code_column": "device_code",
+      "description_column": "description",
+      "group_order": [
+        "$STATION",
+        "$INTERLOCK",
+        "$AXLE",
+        "$BALISE"
+      ],
+      "prompt_groups": [
+        "$SIGNAL",
+        "$ROUTE",
+        "$TRACK",
+        "$POINT"
+      ]
+    },
+    "valtx": {
+      "flags": {
+        "safety": {
+          "column": "safety",
+          "value": 1,
+          "when": "state_is_initial"
+        },
+        "default": {
+          "column": "default",
+          "value": 1,
+          "when": "state_is_initial"
+        }
+      }
+    },
+    "rx": {
+      "renames": [
+        {
+          "from": "SSTDISCTX",
+          "to": "SSTDISCONNES",
+          "description": "disconnection rx"
+        }
+      ]
+    }
+  },
+
+  "outputs": {
+    "directory": "out",
+    "encoding": "latin1",
+    "formats": ["csv", "pickle", "dbf"],
+    "dbf_field_type": "C(64)",
+    "tables": {
+      "tx": "REL_TX",
+      "valtx": "REL_VALTX",
+      "rx": "REL_RX",
+      "valrx": "REL_VALRX"
+    }
+  }
+}
