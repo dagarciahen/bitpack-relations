@@ -73,6 +73,8 @@ index  byte  bit  width  station  group    device  signal
 For example here SSIGSTACOM starts at bit 6 and occupy widht 2 (bit 6 and 7) SSIGPOSREQ begins in bit 3 and have widht = 3 so takes bits 3,4,5 SSIGOCCUP starts at bit 2 and takes 1 bit, so occupy bit 2,finally SSIGOSEMAF takes the rest occupy bit 1 and 0
 The next signal SSIGOSEMAF2 starts in the next byte, if the available space is less than the width of the signal it will take the next byte
 
+For a full explanation how this works in railway systems check https://www.jlcenterprises.net/pages/packing-and-unpacking-io-bytes
+
 
 ## What it is for
 
