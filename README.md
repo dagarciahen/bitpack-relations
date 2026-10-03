@@ -66,11 +66,13 @@ index  byte  bit  width  station  group    device  signal
 1      2     6    2      ST01     $SIGNAL  SIG101  SSIGSTACOM
 1      2     3    3      ST01     $SIGNAL  SIG101  SSIGPOSREQ
 1      2     2    1      ST01     $SIGNAL  SIG101  SSIGOCCUP
+1      2     0    2      ST01     $SIGNAL  SIG102  SSIGOSEMAF
+1      3     7    4      St01     $signal  sig102  SSIGOSEMAF2
 ```
 
-The first three fields share byte 2: the 2 bit field sits at bit
-6, the 3 bit field at bit 3, and the 1 bit field at bit 2. That is
-the packing in action.
+For example here SSIGSTACOM starts at bit 6 and occupy widht 2 (bit 6 and 7) SSIGPOSREQ begins in bit 3 and have widht = 3 so takes bits 3,4,5 SSIGOCCUP starts at bit 2 and takes 1 bit, so occupy bit 2,finally SSIGOSEMAF takes the rest occupy bit 1 and 0
+The next signal SSIGOSEMAF2 starts in the next byte, if the available space is less than the width of the signal it will take the next byte
+
 
 ## What it is for
 
