@@ -5,7 +5,7 @@ RX and VALRX relations. These tables are necessary for thesignalling system to e
 The project file is a plain text file with a `.ns` extension. It holds `key = value` lines rather than a binary format, so it opens
 in any editor. It works at two levels: the main file states how many stations there are (`NSTAZIONILINEA`) and points at the
 project file of each one (`STAZ1`, `STAZ2`), and every station file in turn gives its own `IDSTAZIONE` and the path to its
-`ELENTI.DBF` catalog. The tool follows that chain to know which
+`TABLE_OF_ENTITIES.DBF` catalog. The tool follows that chain to know which
 catalogs to read before generating anything.
 
 ## What the DBF tables contain
