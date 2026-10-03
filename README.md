@@ -1,7 +1,4 @@
 # bitpack-relations
-
-## Generate relation tables from a declarative schema.
-
 This is a personal tool I built in 2024 while working at a railway company, to solve a problem I hit in my own daily work. The tool reads a small text file describing a set of stations, plus a few DBF tables that describe the entities present in each station, such as points (switches) and signals, and writes the TX, VALTX,
 RX and VALRX relations. These tables are necessary for thesignalling system to exchange field data.
 
